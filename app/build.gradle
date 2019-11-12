@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion Versions.compileSdk
@@ -27,6 +28,28 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation Libraries.kotlin
   implementation Libraries.ktx
+
+  implementation Libraries.kotlin
+  implementation FirebaseLibraries.core
+  implementation Libraries.crashlytics
+
+  implementation SupportLibraries.design
+  implementation SupportLibraries.cardview
+  implementation SupportLibraries.appcompat
+  implementation SupportLibraries.recyclerview
+
+  implementation Libraries.dagger
+  implementation Libraries.daggerAndroid
+  implementation Libraries.daggerAndroidSupport
+  kapt Libraries.daggerAnnotationProcessor
+  kapt Libraries.daggerCompiler
+
+  implementation Libraries.lifecycleExtensions
+
+  implementation Libraries.rxjava
+  implementation Libraries.rxkotlin
+
+  debugImplementation Libraries.leakCanaryAndroid
 
   implementation SupportLibraries.appcompat
 

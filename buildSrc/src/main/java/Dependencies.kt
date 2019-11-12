@@ -33,22 +33,21 @@ object Versions {
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
     val maps = "15.0.1"
+    val constraint_layout = "2.0.0-beta2"
 
     val ktx = "1.0.0-alpha1"
 
     val timber = "4.7.1"
     val rxjava = "2.2.10"
     val rxkotlin = "2.3.0"
+    val rx_android = "2.0.1"
     val retrofit = "2.6.0"
     val loggingInterceptor = "4.0.0"
-    val glide = "4.9.0"
-    val rxpaper = "1.4.0"
-    val paperdb = "2.6"
-    val moshi = "1.8.0"
     val lifecycle = "2.0.0"
     val leakCanary = "2.0-alpha-2"
     val crashlytics = "2.10.1"
-    val koin = "2.0.0-beta-1"
+    val picasso = "2.5.2"
+    val okhttp = "3.9.1"
 
     val playCore = "1.6.1"
 
@@ -57,6 +56,8 @@ object Versions {
     val assertjCore = "3.12.2"
     val mockitoKotlin = "2.1.0"
     val mockitoInline = "3.0.0"
+
+    val dagger = "2.15"
 }
 
 object Libraries {
@@ -70,19 +71,14 @@ object Libraries {
 
     val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
+    val rxAndroid =  "io.reactivex.rxjava2:rxandroid:${Versions.rx_android}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-    val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
-
-    val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-
-    val paperdb = "io.paperdb:paperdb:${Versions.paperdb}"
-    val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
-    val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    val retrofitGsonAdapter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val okHttp =  "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
 
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
@@ -91,8 +87,14 @@ object Libraries {
 
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
-    val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-    val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    val daggerAndroid =  "com.google.dagger:dagger-android:${Versions.dagger}"
+    val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    val daggerAnnotationProcessor =  "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+
+    val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    val okHttpDownloader = "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
 }
 
 object SupportLibraries {
@@ -100,6 +102,7 @@ object SupportLibraries {
     val design = "com.google.android.material:material:${Versions.design}"
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    val constraintLayout =  "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
 }
 
 object GoogleLibraries {
