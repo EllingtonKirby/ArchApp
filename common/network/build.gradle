@@ -1,9 +1,19 @@
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
+    implementation project(Modules.dagger)
     implementation Libraries.dagger
     implementation Libraries.daggerAndroid
     implementation Libraries.daggerAndroidSupport
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
+
+    implementation Libraries.retrofit
+    implementation Libraries.retrofitGsonAdapter
+    implementation Libraries.rxjavaAdapter
+    implementation Libraries.okHttp
+    implementation Libraries.okHttpDownloader
+    implementation Libraries.loggingInterceptor
+    implementation Libraries.glide
+    kapt Libraries.glideCompiler
 }

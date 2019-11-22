@@ -4,6 +4,10 @@ object ApplicationId {
 
 object Modules {
     val app = ":app"
+    val network = ":common:network"
+    val dagger = ":common:dagger"
+    val mvvm = ":common:mvvm"
+    val home = ":Home"
 }
 
 object Releases {
@@ -46,7 +50,7 @@ object Versions {
     val lifecycle = "2.0.0"
     val leakCanary = "2.0-alpha-2"
     val crashlytics = "2.10.1"
-    val picasso = "2.5.2"
+    val glide = "4.10.0"
     val okhttp = "3.9.1"
 
     val playCore = "1.6.1"
@@ -93,7 +97,8 @@ object Libraries {
     val daggerAnnotationProcessor =  "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
-    val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     val okHttpDownloader = "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
 }
 
