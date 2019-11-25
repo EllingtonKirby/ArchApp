@@ -1,27 +1,6 @@
-apply plugin: 'com.android.dynamic-feature'
-android {
-    compileSdkVersion 28
-
-
-    defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-
-}
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project('::app')
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+    implementation project(Modules.mvvm)
+    implementation project(Modules.network)
 }
