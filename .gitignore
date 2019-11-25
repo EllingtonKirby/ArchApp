@@ -13,5 +13,7 @@
 /captures
 .externalNativeBuild
 .cxx
-/buildSrc/build/*
-/buildSrc/build
+/*/build/
+/*/build/*
+/common/*/build/
+/common/*/build/*

@@ -3,6 +3,7 @@ package com.ellington.architecture
 import android.app.Activity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import com.ellington.dagger.components.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
@@ -31,7 +32,10 @@ open class ArchApplication: DaggerApplication(), HasActivityInjector, HasSupport
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
-        return null
+        return DaggerAppComponent
+            .builder()
+            .application(this)
+            .build()
     }
 
     override fun onCreate() {

@@ -8,6 +8,7 @@ object Modules {
     val dagger = ":common:dagger"
     val mvvm = ":common:mvvm"
     val home = ":Home"
+    val navigation = ":navigation"
 }
 
 object Releases {
@@ -99,7 +100,6 @@ object Libraries {
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-    val okHttpDownloader = "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
 }
 
 object SupportLibraries {

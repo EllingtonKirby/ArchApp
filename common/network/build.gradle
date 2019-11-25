@@ -11,8 +11,7 @@ dependencies {
     implementation Libraries.retrofit
     implementation Libraries.retrofitGsonAdapter
     implementation Libraries.rxjavaAdapter
-    implementation Libraries.okHttp
-    implementation Libraries.okHttpDownloader
+    api Libraries.okHttp
     implementation Libraries.loggingInterceptor
     implementation Libraries.glide
     kapt Libraries.glideCompiler

@@ -36,6 +36,7 @@ dependencies {
     implementation project(Modules.dagger)
     implementation project(Modules.network)
     implementation project(Modules.mvvm)
+    implementation project(Modules.navigation)
 
     implementation Libraries.kotlin
     implementation Libraries.ktx
