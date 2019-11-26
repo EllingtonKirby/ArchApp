@@ -1,41 +1,22 @@
 package com.ellington.architecture
 
 import android.app.Activity
+import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
-import com.ellington.architecture.dagger.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
+import com.ellington.dagger.modules.DaggerCoreComponent
 import kotlin.random.Random
 
-open class ArchApplication: DaggerApplication(), HasActivityInjector, HasSupportFragmentInjector {
-    /**
-     * Wrappers around mappings of classes descended from android components to relevant injectors
-     * Mapping is assembled via @ContributesAndroidInjector annotated methods
-     */
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+open class ArchApplication : Application() {
 
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-
-    override fun activityInjector(): DispatchingAndroidInjector<Activity>? {
-        return activityInjector
+    private val coreComponent by lazy {
+        DaggerCoreComponent.create()
     }
 
-    override fun supportFragmentInjector(): DispatchingAndroidInjector<Fragment> {
-        return fragmentInjector
-    }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
-        return DaggerAppComponent
-            .builder()
-            .application(this)
-            .build()
+    companion object {
+        @JvmStatic
+        fun coreComponent(context: Context?) =
+            (context?.applicationContext as ArchApplication).coreComponent
     }
 
     override fun onCreate() {
@@ -49,3 +30,5 @@ open class ArchApplication: DaggerApplication(), HasActivityInjector, HasSupport
         AppCompatDelegate.setDefaultNightMode(nightMode)
     }
 }
+
+fun Activity.coreComponent() = ArchApplication.coreComponent(this)
