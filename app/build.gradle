@@ -34,8 +34,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(Modules.dagger)
-    implementation project(Modules.network)
-    implementation project(Modules.mvvm)
     implementation project(Modules.navigation)
 
     implementation Libraries.kotlin
@@ -45,19 +43,11 @@ dependencies {
     implementation FirebaseLibraries.core
     implementation Libraries.crashlytics
 
-    implementation SupportLibraries.design
-    implementation SupportLibraries.cardview
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.recyclerview
+    implementation SupportLibraries.materialComponents
 
     implementation Libraries.dagger
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
-
-    implementation Libraries.lifecycleExtensions
-
-    implementation Libraries.rxjava
-    implementation Libraries.rxkotlin
 
     debugImplementation Libraries.leakCanaryAndroid
 

@@ -4,7 +4,6 @@ object ApplicationId {
 
 object Modules {
     val app = ":app"
-    val network = ":common:network"
     val dagger = ":common:dagger"
     val mvvm = ":common:mvvm"
     val home = ":Home"
@@ -39,6 +38,7 @@ object Versions {
     val recyclerview = "1.0.0"
     val maps = "15.0.1"
     val constraint_layout = "2.0.0-beta2"
+    val material = "1.2.0-alpha02"
 
     val ktx = "1.0.0-alpha1"
 
@@ -93,8 +93,6 @@ object Libraries {
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    // val daggerAndroid =  "com.google.dagger:dagger-android:${Versions.dagger}"
-    // val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     val daggerAnnotationProcessor =  "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
@@ -108,6 +106,7 @@ object SupportLibraries {
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     val constraintLayout =  "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
+    val materialComponents = "com.google.android.material:material:${Versions.material}"
 }
 
 object GoogleLibraries {
