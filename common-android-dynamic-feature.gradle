@@ -1,6 +1,7 @@
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -14,4 +15,14 @@ android {
 dependencies {
     implementation project(Modules.app)
     implementation Libraries.kotlin
+
+    implementation Libraries.dagger
+    kapt Libraries.daggerAnnotationProcessor
+    kapt Libraries.daggerCompiler
+
+    implementation SupportLibraries.design
+    implementation SupportLibraries.constraintLayout
+    implementation SupportLibraries.cardview
+    implementation SupportLibraries.recyclerview
+    implementation SupportLibraries.appcompat
 }

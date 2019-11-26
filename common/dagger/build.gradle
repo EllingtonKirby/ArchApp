@@ -2,8 +2,6 @@ apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     implementation Libraries.dagger
-    implementation Libraries.daggerAndroid
-    implementation Libraries.daggerAndroidSupport
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
 }

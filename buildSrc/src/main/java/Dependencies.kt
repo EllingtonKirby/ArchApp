@@ -62,7 +62,7 @@ object Versions {
     val mockitoKotlin = "2.1.0"
     val mockitoInline = "3.0.0"
 
-    val dagger = "2.15"
+    val dagger = "2.16"
 }
 
 object Libraries {
@@ -93,8 +93,8 @@ object Libraries {
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    val daggerAndroid =  "com.google.dagger:dagger-android:${Versions.dagger}"
-    val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    // val daggerAndroid =  "com.google.dagger:dagger-android:${Versions.dagger}"
+    // val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     val daggerAnnotationProcessor =  "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 

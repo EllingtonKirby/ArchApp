@@ -51,8 +51,6 @@ dependencies {
     implementation SupportLibraries.recyclerview
 
     implementation Libraries.dagger
-    implementation Libraries.daggerAndroid
-    implementation Libraries.daggerAndroidSupport
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
 

@@ -2,4 +2,6 @@ package com.ellington.mvvm.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-open class BaseViewModel : ViewModel()
+abstract class BaseViewModel : ViewModel() {
+    abstract override fun onCleared()
+}

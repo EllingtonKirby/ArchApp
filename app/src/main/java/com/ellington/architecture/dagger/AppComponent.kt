@@ -1,9 +1,7 @@
-package com.ellington.dagger.components
+package com.ellington.architecture.dagger
 
 import android.app.Application
 import com.ellington.architecture.ArchApplication
-import com.ellington.architecture.dagger.ActivityBuilder
-import com.ellington.architecture.dagger.ViewModelBuilder
 import com.ellington.dagger.utils.PerApplication
 import com.ellington.network.NetworkingModule
 import dagger.BindsInstance
@@ -14,7 +12,6 @@ import dagger.android.support.AndroidSupportInjectionModule
 @PerApplication
 @Component(
     modules = [
-        AndroidSupportInjectionModule::class,
         ViewModelBuilder::class,
         ActivityBuilder::class,
         NetworkingModule::class
