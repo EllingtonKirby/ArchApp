@@ -62,8 +62,8 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
     }
 
     private fun setAlbumsData(albums: Albums) {
-        _albumsResponse.value = albums
-        _albumList.value?.plus(ArrayList(albums.data))
+        _albumsResponse.postValue(albums)
+        _albumList.postValue(albumList.value?.plus(albums.data)?.toMutableList())
     }
 
     override fun onCleared() {
