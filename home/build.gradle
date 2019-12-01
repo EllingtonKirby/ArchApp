@@ -7,4 +7,7 @@ dependencies {
     implementation Libraries.lifecycleExtensions
     implementation Libraries.lifecycleKotlinExtensions
     kapt Libraries.lifecycleCompiler
+
+    implementation Libraries.glide
+    kapt Libraries.glideCompiler
 }
