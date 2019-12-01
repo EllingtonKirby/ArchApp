@@ -7,8 +7,17 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/album_list_appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/album_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/album_list_recycler"
