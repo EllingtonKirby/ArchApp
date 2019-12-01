@@ -3,19 +3,19 @@ package com.ellington.home.dagger
 import com.ellington.dagger.modules.BaseFragmentComponent
 import com.ellington.dagger.modules.CoreComponent
 import com.ellington.dagger.utils.PerActivity
-import com.ellington.home.view.PictureListFragment
+import com.ellington.home.view.AlbumListFragment
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [PictureListFragmentModule::class], dependencies = [CoreComponent::class])
+@Component(modules = [AlbumListFragmentModule::class], dependencies = [CoreComponent::class])
 @PerActivity
-interface PictureListFragmentComponent : BaseFragmentComponent<PictureListFragment> {
+interface AlbumListFragmentComponent : BaseFragmentComponent<AlbumListFragment> {
 
     @Component.Builder
     interface Builder {
-        fun build(): PictureListFragmentComponent
+        fun build(): AlbumListFragmentComponent
         @BindsInstance
-        fun pictureListFragment(fragment: PictureListFragment): Builder
+        fun albumListFragment(fragment: AlbumListFragment): Builder
 
         fun coreComponent(module: CoreComponent): Builder
     }
