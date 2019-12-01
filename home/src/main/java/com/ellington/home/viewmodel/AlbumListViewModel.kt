@@ -16,13 +16,13 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
     BaseViewModel<AlbumListViewModelProvider>() {
 
     private val _loading = MutableLiveData<Boolean>()
-    private val _albumList = MutableLiveData<List<Album>>().apply { value = emptyList() }
+    private val _albumList = MutableLiveData<MutableList<Album>>().apply { value = mutableListOf() }
     private val _albumsResponse = MutableLiveData<Albums>().apply { value = Albums() }
     private val _openAlbumEvent = MutableLiveData<Event<String>>()
     private val _errorMessage = MutableLiveData<Event<Int>>()
 
     val isLoading: LiveData<Boolean> = _loading
-    val albumList: LiveData<List<Album>> = _albumList
+    val albumList: LiveData<MutableList<Album>> = _albumList
     val openAlbum: LiveData<Event<String>> = _openAlbumEvent
     val errorMessage: LiveData<Event<Int>> = _errorMessage
 
@@ -53,9 +53,17 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
     fun loadNextPageOfAlbums() {
     }
 
+    fun getAlbumAtPosition(position: Int): Album {
+        return _albumList.value?.get(position) ?: Album()
+    }
+
+    fun getAlbumListSize(): Int {
+        return _albumList.value?.size ?: 0
+    }
+
     private fun setAlbumsData(albums: Albums) {
         _albumsResponse.value = albums
-        _albumList.value = ArrayList(albums.data)
+        _albumList.value?.plus(ArrayList(albums.data))
     }
 
     override fun onCleared() {
