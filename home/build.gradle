@@ -3,4 +3,8 @@ apply from: "$rootDir/common-android-dynamic-feature.gradle"
 dependencies {
     implementation project(Modules.mvvm)
     implementation project(Modules.dagger)
+
+    implementation Libraries.lifecycleExtensions
+    implementation Libraries.lifecycleKotlinExtensions
+    kapt Libraries.lifecycleCompiler
 }

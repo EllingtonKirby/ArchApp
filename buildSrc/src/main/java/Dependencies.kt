@@ -48,7 +48,7 @@ object Versions {
     val rx_android = "2.0.1"
     val retrofit = "2.6.0"
     val loggingInterceptor = "4.0.0"
-    val lifecycle = "2.0.0"
+    val lifecycle = "2.1.0"
     val leakCanary = "2.0-alpha-2"
     val crashlytics = "2.10.1"
     val glide = "4.10.0"
@@ -76,16 +76,18 @@ object Libraries {
 
     val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
-    val rxAndroid =  "io.reactivex.rxjava2:rxandroid:${Versions.rx_android}"
+    val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rx_android}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val retrofitGsonAdapter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    val okHttp =  "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
 
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    val lifecycleKotlinExtensions =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
@@ -93,7 +95,7 @@ object Libraries {
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    val daggerAnnotationProcessor =  "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+    val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
@@ -105,7 +107,8 @@ object SupportLibraries {
     val design = "com.google.android.material:material:${Versions.design}"
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
-    val constraintLayout =  "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
+    val constraintLayout =
+        "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
     val materialComponents = "com.google.android.material:material:${Versions.material}"
 }
 
