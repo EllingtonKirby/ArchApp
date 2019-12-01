@@ -4,10 +4,11 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDexApplication
 import com.ellington.dagger.modules.DaggerCoreComponent
 import kotlin.random.Random
 
-open class ArchApplication : Application() {
+open class ArchApplication : MultiDexApplication() {
 
     private val coreComponent by lazy {
         DaggerCoreComponent.create()

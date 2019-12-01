@@ -8,7 +8,7 @@ import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 
 private val classMap = mutableMapOf<String, Class<*>>()
-private const val PACKAGE_NAME = "com.ellington"
+private const val PACKAGE_NAME = "com.ellington.architecture"
 
 internal fun String.loadFragmentOrNull(): Fragment? =
     try {

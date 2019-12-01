@@ -19,7 +19,7 @@ object Versions {
     val gradle = "4.0.0-alpha01"
 
     val compileSdk = 28
-    val minSdk = 23
+    val minSdk = 19
     val targetSdk = 28
 
     val kotlin = "1.3.60-eap-25"
@@ -39,6 +39,7 @@ object Versions {
     val maps = "15.0.1"
     val constraint_layout = "2.0.0-beta2"
     val material = "1.2.0-alpha02"
+    val multiDex = "2.0.1"
 
     val ktx = "1.0.0-alpha1"
 
@@ -110,6 +111,7 @@ object SupportLibraries {
     val constraintLayout =
         "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
     val materialComponents = "com.google.android.material:material:${Versions.material}"
+    val multiDex = "androidx.multidex:multidex:${Versions.multiDex}"
 }
 
 object GoogleLibraries {

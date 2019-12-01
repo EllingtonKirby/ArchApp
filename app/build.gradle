@@ -13,6 +13,7 @@ android {
         versionCode Releases.versionCode
         versionName Releases.versionName
 
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -44,6 +45,7 @@ dependencies {
     implementation Libraries.crashlytics
 
     implementation SupportLibraries.materialComponents
+    implementation SupportLibraries.multiDex
 
     implementation Libraries.dagger
     kapt Libraries.daggerAnnotationProcessor
