@@ -16,6 +16,12 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
 
     private lateinit var adapter: AlbumListGridAdapter
 
+    companion object {
+        fun newInstance(): AlbumListFragment {
+            return AlbumListFragment()
+        }
+    }
+
     override fun onAttach(context: Context) {
         inject(this)
         super.onAttach(context)
