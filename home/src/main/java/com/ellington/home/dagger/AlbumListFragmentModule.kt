@@ -1,7 +1,7 @@
 package com.ellington.home.dagger
 
-import android.accounts.NetworkErrorException
 import androidx.lifecycle.ViewModelProvider
+import com.ellington.home.data.Album
 import com.ellington.home.data.Albums
 import com.ellington.home.data.source.AlbumsRepository
 import com.ellington.home.view.AlbumListFragment
@@ -33,7 +33,15 @@ abstract class AlbumListFragmentModule {
                     forcedUpdate: Boolean,
                     nextPage: Boolean
                 ): Result<Albums> {
-                    return Result.Error(NetworkErrorException())
+                    val albums = Albums()
+                    albums.apply {
+                        val newData = arrayListOf<Album>()
+                        (0..20).forEach {
+                            newData.add(Album())
+                        }
+                        this.data = newData
+                    }
+                    return Result.Success(albums)
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.ellington.home.view
 
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.home.data.Album
 import com.ellington.home.viewmodel.AlbumListViewModel
