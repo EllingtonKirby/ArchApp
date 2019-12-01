@@ -12,16 +12,18 @@ import com.ellington.mvvm.utils.Event
 import com.ellington.mvvm.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 
-class PictureListViewModel(val repository: AlbumsRepository) :
-    BaseViewModel<PictureListViewModelProvider>() {
+class AlbumListViewModel(val repository: AlbumsRepository) :
+    BaseViewModel<AlbumListViewModelProvider>() {
 
+    private val _loading = MutableLiveData<Boolean>()
     private val _albumList = MutableLiveData<List<Album>>().apply { value = emptyList() }
     private val _albumsResponse = MutableLiveData<Albums>().apply { value = Albums() }
-    private val _loading = MutableLiveData<Boolean>()
+    private val _openAlbumEvent = MutableLiveData<Event<String>>()
     private val _errorMessage = MutableLiveData<Event<Int>>()
 
-    val albumList: LiveData<List<Album>> = _albumList
     val isLoading: LiveData<Boolean> = _loading
+    val albumList: LiveData<List<Album>> = _albumList
+    val openAlbum: LiveData<Event<String>> = _openAlbumEvent
     val errorMessage: LiveData<Event<Int>> = _errorMessage
 
     init {
