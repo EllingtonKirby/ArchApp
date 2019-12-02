@@ -2,6 +2,7 @@ apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -25,4 +26,6 @@ dependencies {
     implementation SupportLibraries.cardview
     implementation SupportLibraries.recyclerview
     implementation SupportLibraries.appcompat
+    implementation SupportLibraries.navigationFragment
+    implementation SupportLibraries.navigationUI
 }
