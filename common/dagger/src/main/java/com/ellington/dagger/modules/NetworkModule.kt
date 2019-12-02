@@ -23,21 +23,4 @@ class NetworkingModule {
     fun providesGson(): Gson =
         GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
-
-    // @PerApplication
-    // @Provides
-    // fun providesRetrofit(
-    //     client: OkHttpClient,
-    //     gson: Gson
-    // ): Retrofit = Retrofit.Builder()
-    //     .baseUrl("https://api.openweathermap.org/")
-    //     .client(client)
-    //     .addConverterFactory(GsonConverterFactory.create(gson))
-    //     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-    //     .build()
-    //
-    // @PerApplication
-    // @Provides
-    // fun providesApi(retrofit: Retrofit): ApiClient = ApiClient(retrofit.create(Api::class.java))
-
 }

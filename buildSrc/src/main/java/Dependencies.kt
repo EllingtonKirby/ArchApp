@@ -90,6 +90,7 @@ object Libraries {
     val lifecycleKotlinExtensions =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+    val lifecycleReactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams:${Versions.lifecycle}"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 

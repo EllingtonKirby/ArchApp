@@ -6,8 +6,13 @@ dependencies {
 
     implementation Libraries.lifecycleExtensions
     implementation Libraries.lifecycleKotlinExtensions
+    implementation Libraries.lifecycleReactiveStreams
     kapt Libraries.lifecycleCompiler
 
     implementation Libraries.glide
     kapt Libraries.glideCompiler
+
+    implementation Libraries.retrofit
+    implementation Libraries.retrofitGsonAdapter
+    implementation Libraries.rxjavaAdapter
 }

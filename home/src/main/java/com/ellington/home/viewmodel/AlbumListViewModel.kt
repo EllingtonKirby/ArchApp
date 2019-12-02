@@ -1,5 +1,6 @@
 package com.ellington.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -34,7 +35,7 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
         _loading.value = true
 
         viewModelScope.launch {
-            val albumsResult = repository.getAlbums(forcedUpdate)
+            val albumsResult = repository.getAlbums("2529", forcedUpdate)
 
             if (albumsResult is Result.Success) {
                 val albums = albumsResult.data
@@ -42,7 +43,7 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
                 setAlbumsData(albums)
             } else {
                 setAlbumsData(Albums())
-
+                Log.e("Error", "Error fetching albums")
                 _errorMessage.value = Event(R.string.error_loading_albums)
             }
 
