@@ -8,9 +8,12 @@ import com.ellington.mvvm.repository.Result
 class AlbumsRepositoryImpl(private val albumsDataSource: AlbumsDataSource) : AlbumsRepository {
     override suspend fun getAlbums(
         userId: String,
-        forcedUpdate: Boolean,
-        nextPage: Boolean
+        forcedUpdate: Boolean
     ): Result<Albums> {
         return albumsDataSource.getAlbums(userId)
+    }
+
+    override suspend fun getNextPageOfAlbums(url: String): Result<Albums> {
+        return albumsDataSource.getNextPageOfAlbums(url)
     }
 }

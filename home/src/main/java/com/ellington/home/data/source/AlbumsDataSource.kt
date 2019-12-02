@@ -6,4 +6,5 @@ import io.reactivex.Flowable
 
 interface AlbumsDataSource {
     suspend fun getAlbums(userId: String): Result<Albums>
+    suspend fun getNextPageOfAlbums(url: String): Result<Albums>
 }
