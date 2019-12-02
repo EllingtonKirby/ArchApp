@@ -40,6 +40,7 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
             if (albumsResult is Result.Success) {
                 val albums = albumsResult.data
 
+                Log.v("Success", "Successfully fetched albums data")
                 setAlbumsData(albums)
             } else {
                 setAlbumsData(Albums())
@@ -64,7 +65,7 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
 
     private fun setAlbumsData(albums: Albums) {
         _albumsResponse.postValue(albums)
-        _albumList.postValue(albumList.value?.plus(albums.data)?.toMutableList())
+        _albumList.value = albumList.value?.plus(albums.data)?.toMutableList()
     }
 
     override fun onCleared() {

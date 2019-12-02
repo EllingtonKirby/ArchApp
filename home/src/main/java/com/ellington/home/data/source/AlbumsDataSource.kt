@@ -5,5 +5,5 @@ import com.ellington.mvvm.repository.Result
 import io.reactivex.Flowable
 
 interface AlbumsDataSource {
-    suspend fun getAlbums(userId: String): Flowable<Result<Albums>>
+    suspend fun getAlbums(userId: String): Result<Albums>
 }
