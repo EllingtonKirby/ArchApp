@@ -11,7 +11,7 @@ import javax.inject.Inject
 class AlbumsDataSourceImpl @Inject constructor(private val api: AlbumsApi) : AlbumsDataSource {
     override suspend fun getAlbums(userId: String): Result<Albums> {
         return api.getAlbums(userId)
-            .subscribeOn(Schedulers.computation())
+            .subscribeOn(Schedulers.io())
             .doOnError {
                 Log.e("Error", it.message)
             }
@@ -23,6 +23,23 @@ class AlbumsDataSourceImpl @Inject constructor(private val api: AlbumsApi) : Alb
                 }
             }
             .onErrorReturn { Result.Error(Exception()) }
+            .blockingLast()
+    }
+
+    override suspend fun getNextPageOfAlbums(url: String): Result<Albums> {
+        return api.getNextPageOfAlbums(url)
+            .subscribeOn(Schedulers.io())
+            .doOnError { Log.e("Error", it.message) }
+            .map {
+                if (!it.isError) {
+                    return@map Result.Success(it.response()?.body() ?: Albums())
+                } else {
+                    return@map Result.Error(Exception(it.error()))
+                }
+            }
+            .onErrorReturn {
+                Result.Error(Exception())
+            }
             .blockingLast()
     }
 }

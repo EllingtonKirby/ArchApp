@@ -13,7 +13,7 @@ import com.ellington.mvvm.utils.Event
 import com.ellington.mvvm.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 
-class AlbumListViewModel(val repository: AlbumsRepository) :
+class AlbumListViewModel(private val repository: AlbumsRepository) :
     BaseViewModel<AlbumListViewModelProvider>() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -53,6 +53,23 @@ class AlbumListViewModel(val repository: AlbumsRepository) :
     }
 
     fun loadNextPageOfAlbums() {
+        val url = _albumsResponse.value?.next
+        if (url?.isNotEmpty() == true) {
+            _loading.value = true
+            viewModelScope.launch {
+                val albumsResult = repository.getNextPageOfAlbums(url)
+
+                if (albumsResult is Result.Success) {
+                    val albums = albumsResult.data
+
+                    setAlbumsData(albums)
+                } else {
+                    Log.e("Error", "Error fetching albums")
+                    _errorMessage.value = Event(R.string.error_loading_albums)
+                }
+                _loading.value = false
+            }
+        }
     }
 
     fun getAlbumAtPosition(position: Int): Album {
