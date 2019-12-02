@@ -9,7 +9,7 @@ class HomeActivity(override val layoutResourceId: Int = R.layout.activity_home) 
         super.onCreate(savedInstanceState)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.home_frame_layout, AlbumListFragment.newInstance())
+            .replace(R.id.home_frame_layout, AlbumListFragment.newInstance())
             .commit()
     }
 }

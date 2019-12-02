@@ -6,7 +6,7 @@ object Modules {
     val app = ":app"
     val dagger = ":common:dagger"
     val mvvm = ":common:mvvm"
-    val home = ":Home"
+    val home = ":home"
     val navigation = ":navigation"
 }
 
