@@ -1,6 +1,7 @@
 package com.ellington.home.dagger
 
 import androidx.lifecycle.ViewModelProvider
+import com.ellington.dagger.utils.PerActivity
 import com.ellington.home.data.api.AlbumsApi
 import com.ellington.home.data.source.AlbumsDataSource
 import com.ellington.home.data.source.AlbumsRepository
@@ -53,6 +54,7 @@ abstract class AlbumListFragmentModule {
 
         @JvmStatic
         @Provides
+        @PerActivity
         fun providesAlbumListViewModel(
             factory: AlbumListViewModelProvider,
             fragment: AlbumListFragment

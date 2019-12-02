@@ -34,5 +34,9 @@ class AlbumItemView @JvmOverloads constructor(
             .error(R.drawable.ic_album_placeholder)
             .transition(DrawableTransitionOptions.withCrossFade(300))
             .into(album_item_image)
+
+        album_item_image.setOnClickListener {
+            viewModel.onAlbumSelected(data.id)
+        }
     }
 }
