@@ -33,7 +33,7 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
     }
 
     private fun setUpAdapter() {
-        val layoutManager = GridLayoutManager(context, 4)
+        val layoutManager = GridLayoutManager(context, 2)
         adapter = AlbumListGridAdapter(viewModel)
 
         album_list_recycler.layoutManager = layoutManager

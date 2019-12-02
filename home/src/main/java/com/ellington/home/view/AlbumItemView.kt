@@ -26,7 +26,7 @@ class AlbumItemView @JvmOverloads constructor(
 
     override fun bind(viewModel: AlbumListViewModel, data: Album) {
         GlideApp.with(this)
-            .load(data.cover)
+            .load(data.coverMedium)
             .fitCenter()
             .placeholder(R.drawable.ic_album_placeholder)
             .error(R.drawable.ic_album_placeholder)
