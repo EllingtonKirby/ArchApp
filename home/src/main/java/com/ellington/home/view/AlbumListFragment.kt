@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.home.R
@@ -60,7 +61,12 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
         })
 
         viewModel.openAlbum.observe(this, Observer {
-            //Use Navigation here
+            val id = it.getContentIfNotHandled()
+            id?.let {
+                val direction =
+                    AlbumListFragmentDirections.actionAlbumListFragmentToAlbumDetailFragment(id)
+                findNavController().navigate(direction)
+            }
         })
     }
 }

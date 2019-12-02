@@ -40,6 +40,7 @@ object Versions {
     val constraint_layout = "2.0.0-beta2"
     val material = "1.2.0-alpha02"
     val multiDex = "2.0.1"
+    val navigation = "2.1.0"
 
     val ktx = "1.0.0-alpha1"
 
@@ -90,7 +91,8 @@ object Libraries {
     val lifecycleKotlinExtensions =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
-    val lifecycleReactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams:${Versions.lifecycle}"
+    val lifecycleReactiveStreams =
+        "androidx.lifecycle:lifecycle-reactivestreams:${Versions.lifecycle}"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 
@@ -113,6 +115,9 @@ object SupportLibraries {
         "com.android.support.constraint:constraint-layout:${Versions.constraint_layout}"
     val materialComponents = "com.google.android.material:material:${Versions.material}"
     val multiDex = "androidx.multidex:multidex:${Versions.multiDex}"
+
+    val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object GoogleLibraries {
