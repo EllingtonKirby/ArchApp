@@ -3,6 +3,8 @@ package com.ellington.home.view
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.TransitionOptions
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ellington.home.R
 import com.ellington.home.dagger.GlideApp
 import com.ellington.home.data.Album
@@ -30,6 +32,7 @@ class AlbumItemView @JvmOverloads constructor(
             .fitCenter()
             .placeholder(R.drawable.ic_album_placeholder)
             .error(R.drawable.ic_album_placeholder)
+            .transition(DrawableTransitionOptions.withCrossFade(300))
             .into(album_item_image)
     }
 }
