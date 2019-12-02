@@ -2,6 +2,7 @@ package com.ellington.home.data.api
 
 import com.ellington.home.data.Albums
 import io.reactivex.Flowable
+import retrofit2.adapter.rxjava2.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
 

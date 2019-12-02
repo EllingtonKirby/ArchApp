@@ -21,6 +21,7 @@ class NetworkingModule {
     @PerApplication
     @Provides
     fun providesGson(): Gson =
-        GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+        GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
 }
