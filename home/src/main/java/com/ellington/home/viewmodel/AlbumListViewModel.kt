@@ -72,6 +72,10 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
         }
     }
 
+    fun onAlbumSelected(id: String) {
+        _openAlbumEvent.postValue(Event(id))
+    }
+
     fun getAlbumAtPosition(position: Int): Album {
         return _albumList.value?.get(position) ?: Album()
     }

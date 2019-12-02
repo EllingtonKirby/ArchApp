@@ -58,5 +58,9 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
         viewModel.albumList.observe(this, Observer {
             adapter.notifyDataSetChanged()
         })
+
+        viewModel.openAlbum.observe(this, Observer {
+            //Use Navigation here
+        })
     }
 }
