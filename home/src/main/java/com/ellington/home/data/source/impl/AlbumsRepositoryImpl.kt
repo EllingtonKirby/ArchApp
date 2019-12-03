@@ -30,7 +30,14 @@ class AlbumsRepositoryImpl(
     }
 
     override suspend fun getNextPageOfAlbums(url: String): Result<Albums> {
-        return remoteDataSource.getNextPageOfAlbums(url)
+        return withContext(ioDispatcher) {
+            val remote = remoteDataSource.getNextPageOfAlbums(url)
+            if (remote is Result.Success) {
+                refreshLocalDataSource(remote.data)
+            }
+
+            return@withContext remote
+        }
     }
 
     override suspend fun getAlbumById(albumId: String): Result<Album> {
