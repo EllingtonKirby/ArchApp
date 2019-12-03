@@ -6,4 +6,6 @@
     \n\nIn ornare sodales urna vitae imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur imperdiet mattis turpis sed tempor. Sed scelerisque magna sed tempor iaculis. Maecenas aliquam nibh et mi lacinia, at dignissim massa congue. Curabitur pharetra arcu ut sem feugiat porttitor. Vivamus venenatis ex in convallis aliquam. Ut posuere finibus aliquet. Quisque aliquam ullamcorper dictum. Nunc auctor mauris a metus finibus porttitor. Nullam laoreet purus eu diam fermentum accumsan. Sed consequat id nibh sit amet sollicitudin. Quisque dolor erat, imperdiet non facilisis eget, tempus id lacus. Nam porta a est sed lobortis.</string>
     <string name="artist">"Artist: "</string>
     <string name="released">"Released: "</string>
+    <string name="album_info">Album Info</string>
+    <string name="on_deezer">Checkout on Deezer</string>
 </resources>
