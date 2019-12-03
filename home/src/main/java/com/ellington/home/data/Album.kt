@@ -16,6 +16,6 @@ data class Album(
     @ColumnInfo(name = "cover_big") var coverBig: String = "",
     @ColumnInfo(name = "cover_xl") var coverXl: String = "",
     @ColumnInfo(name = "release_date") var releaseDate: String = "",
-    @ColumnInfo(name = "track_list") var trackList: String = "",
+    @ColumnInfo(name = "track_list") var tracklist: String = "",
     @Embedded(prefix = "artist_") var artist: Artist = Artist()
 )
