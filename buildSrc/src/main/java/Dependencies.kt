@@ -50,7 +50,7 @@ object Versions {
     val rxkotlin = "2.3.0"
     val rx_android = "2.0.1"
     val retrofit = "2.6.0"
-    val loggingInterceptor = "4.0.0"
+    val loggingInterceptor = "3.12.0"
     val lifecycle = "2.1.0"
     val leakCanary = "2.0-alpha-2"
     val crashlytics = "2.10.1"
