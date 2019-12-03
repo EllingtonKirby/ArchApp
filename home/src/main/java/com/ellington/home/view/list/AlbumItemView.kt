@@ -3,10 +3,9 @@ package com.ellington.home.view.list
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.TransitionOptions
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ellington.home.R
 import com.ellington.home.dagger.GlideApp
+import com.ellington.home.dagger.addCommonPlaceHolderAndFade
 import com.ellington.home.data.Album
 import com.ellington.home.viewmodel.AlbumListViewModel
 import com.ellington.mvvm.base.BaseView
@@ -29,10 +28,7 @@ class AlbumItemView @JvmOverloads constructor(
     override fun bind(viewModel: AlbumListViewModel, data: Album) {
         GlideApp.with(this)
             .load(data.coverMedium)
-            .fitCenter()
-            .placeholder(R.drawable.ic_album_placeholder)
-            .error(R.drawable.ic_album_placeholder)
-            .transition(DrawableTransitionOptions.withCrossFade(300))
+            .addCommonPlaceHolderAndFade()
             .into(album_item_image)
 
         album_item_image.setOnClickListener {
