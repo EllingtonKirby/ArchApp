@@ -18,5 +18,4 @@ dependencies {
 
     implementation Libraries.retrofit
     implementation Libraries.retrofitGsonAdapter
-    implementation Libraries.rxjavaAdapter
 }
