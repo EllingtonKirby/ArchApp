@@ -2,6 +2,7 @@ package com.ellington.home.data.source.impl
 
 import com.ellington.home.data.Album
 import com.ellington.home.data.Albums
+import com.ellington.home.data.TrackList
 import com.ellington.home.data.local.AlbumDao
 import com.ellington.home.data.source.AlbumsDataSource
 import com.ellington.mvvm.repository.Result
@@ -35,5 +36,9 @@ class AlbumLocalDataSourceImpl(
         withContext(ioDispatcher) {
             albumDao.insertAlbums(albums.data)
         }
+    }
+
+    override suspend fun getTrackList(url: String): Result<TrackList> {
+        return Result.Error(Exception())
     }
 }
