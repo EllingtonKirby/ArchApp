@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/albumListFragment"
-        android:name="com.ellington.home.view.AlbumListFragment"
+        android:name="com.ellington.home.view.list.AlbumListFragment"
         android:label="AlbumListFragment">
         <action
             android:id="@+id/action_albumListFragment_to_albumDetailFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
-        android:name="com.ellington.home.view.AlbumDetailFragment"
+        android:name="com.ellington.home.view.details.AlbumDetailFragment"
         android:label="AlbumDetailFragment">
         <argument
             android:name="albumId"

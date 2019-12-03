@@ -1,4 +1,4 @@
-package com.ellington.home.view
+package com.ellington.home.view.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,21 +9,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.home.R
 import com.ellington.home.dagger.inject
-import com.ellington.home.viewmodel.AlbumListViewModel
+import com.ellington.home.view.AlbumViewingFragment
 import com.ellington.mvvm.utils.EndlessRecyclerViewScrollListener
-import com.ellington.mvvm.viewmodel.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_album_list.*
 
 class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_album_list) :
-    ViewModelFragment<AlbumListViewModel>() {
+    AlbumViewingFragment() {
 
     private lateinit var adapter: AlbumListGridAdapter
-
-    companion object {
-        fun newInstance(): AlbumListFragment {
-            return AlbumListFragment()
-        }
-    }
 
     override fun onAttach(context: Context) {
         inject(this)
@@ -64,7 +57,9 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
             val id = it.getContentIfNotHandled()
             id?.let {
                 val direction =
-                    AlbumListFragmentDirections.actionAlbumListFragmentToAlbumDetailFragment(id)
+                    AlbumListFragmentDirections.actionAlbumListFragmentToAlbumDetailFragment(
+                        id
+                    )
                 findNavController().navigate(direction)
             }
         })

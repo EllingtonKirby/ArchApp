@@ -1,4 +1,4 @@
-package com.ellington.home.view
+package com.ellington.home.view.list
 
 import android.content.Context
 import android.util.AttributeSet
