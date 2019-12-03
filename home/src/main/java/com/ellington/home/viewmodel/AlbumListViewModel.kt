@@ -32,6 +32,10 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
     val trackList: LiveData<TrackList> = _trackList
     val errorMessage: LiveData<Event<Int>> = _errorMessage
 
+    init {
+        loadAlbums(true)
+    }
+
     fun loadAlbums(forcedUpdate: Boolean = false) {
         _loading.value = true
 
@@ -78,8 +82,8 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
             if (trackListResult is Result.Success) {
                 _trackList.postValue(trackListResult.data)
             }
+            _loading.value = false
         }
-        _loading.value = false
     }
 
     fun loadNextPageOfAlbums() {

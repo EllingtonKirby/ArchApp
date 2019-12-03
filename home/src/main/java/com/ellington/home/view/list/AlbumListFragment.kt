@@ -26,7 +26,6 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpAdapter()
-        viewModel.loadAlbums(true)
     }
 
     private fun setUpAdapter() {
@@ -63,6 +62,10 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
                     )
                 findNavController().navigate(direction)
             }
+        })
+
+        viewModel.isLoading.observe(this, Observer {
+            album_list_progress.visibility = if (it) View.VISIBLE else View.GONE
         })
     }
 }

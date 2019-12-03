@@ -47,6 +47,10 @@ class AlbumDetailFragment(override val layoutResourceId: Int = R.layout.fragment
             adapter.data = it
             adapter.notifyDataSetChanged()
         })
+
+        viewModel.isLoading.observe(this, Observer {
+            album_info_progress.visibility = if (it) View.VISIBLE else View.GONE
+        })
     }
 
     private fun setUpViews(album: Album) {
