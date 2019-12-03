@@ -26,6 +26,7 @@ class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_a
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpAdapter()
+        viewModel.loadAlbums(true)
     }
 
     private fun setUpAdapter() {
