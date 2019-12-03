@@ -20,10 +20,12 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
     private val _albumList = MutableLiveData<MutableList<Album>>().apply { value = mutableListOf() }
     private val _albumsResponse = MutableLiveData<Albums>().apply { value = Albums() }
     private val _openAlbumEvent = MutableLiveData<Event<String>>()
+    private val _singleAlbumData = MutableLiveData<Album>().apply { value = Album() }
     private val _errorMessage = MutableLiveData<Event<Int>>()
 
     val isLoading: LiveData<Boolean> = _loading
     val albumList: LiveData<MutableList<Album>> = _albumList
+    val singleAlbum: LiveData<Album> = _singleAlbumData
     val openAlbum: LiveData<Event<String>> = _openAlbumEvent
     val errorMessage: LiveData<Event<Int>> = _errorMessage
 
@@ -49,6 +51,23 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
             }
 
             _loading.value = false
+        }
+    }
+
+    fun loadAlbumById(albumId: String?) {
+        if (albumId != null) {
+            _loading.value = true
+            viewModelScope.launch {
+                val albumResult = repository.getAlbumById(albumId)
+                if (albumResult is Result.Success) {
+                    _singleAlbumData.postValue(albumResult.data)
+                } else {
+                    Log.e("Error", "Error fetching albums")
+                    _errorMessage.value = Event(R.string.error_loading_album)
+                }
+
+                _loading.value = false
+            }
         }
     }
 

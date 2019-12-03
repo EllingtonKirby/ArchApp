@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="error_loading_albums">Woops! Unable to load albums</string>
+    <string name="error_loading_album">Whoops! We were unable to load that album!</string>
+    <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a ex leo. Fusce mollis dignissim justo, at aliquet nibh varius vel. Maecenas dictum nulla dictum pellentesque molestie. In ut lacus in est elementum interdum. Ut nisi nunc, auctor in dignissim ut, venenatis vitae ante. Praesent turpis est, dignissim gravida est sit amet, laoreet dictum ex. Integer sed sollicitudin orci. Morbi at iaculis neque. Nunc eget nisi purus. Nulla vulputate congue urna id finibus. Praesent eu quam eleifend, tempus sapien eget, aliquet lorem. Praesent tincidunt turpis eget dolor varius vulputate. Donec vel lorem quam. Ut vel pretium lacus, id efficitur lectus. Duis finibus nibh nec sem laoreet, sed imperdiet est consequat. Suspendisse in est eget diam faucibus scelerisque.
+    \n\nIn ornare sodales urna vitae imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur imperdiet mattis turpis sed tempor. Sed scelerisque magna sed tempor iaculis. Maecenas aliquam nibh et mi lacinia, at dignissim massa congue. Curabitur pharetra arcu ut sem feugiat porttitor. Vivamus venenatis ex in convallis aliquam. Ut posuere finibus aliquet. Quisque aliquam ullamcorper dictum. Nunc auctor mauris a metus finibus porttitor. Nullam laoreet purus eu diam fermentum accumsan. Sed consequat id nibh sit amet sollicitudin. Quisque dolor erat, imperdiet non facilisis eget, tempus id lacus. Nam porta a est sed lobortis.</string>
+    <string name="artist">"Artist: "</string>
+    <string name="released">"Released: "</string>
 </resources>
