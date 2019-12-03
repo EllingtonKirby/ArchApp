@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.home.R
 import com.ellington.home.dagger.inject
-import com.ellington.home.view.AlbumViewingFragment
+import com.ellington.home.viewmodel.AlbumListViewModel
 import com.ellington.mvvm.utils.EndlessRecyclerViewScrollListener
+import com.ellington.mvvm.viewmodel.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_album_list.*
 
 class AlbumListFragment(override val layoutResourceId: Int = R.layout.fragment_album_list) :
-    AlbumViewingFragment() {
+    ViewModelFragment<AlbumListViewModel>() {
 
     private lateinit var adapter: AlbumListGridAdapter
 

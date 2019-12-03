@@ -1,5 +1,6 @@
 package com.ellington.dagger.modules
 
+import com.ellington.dagger.utils.PerApplication
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -10,7 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Singleton
 
 @Module
-class NetworkingModule {
+class CoreModule {
     @Singleton
     @Provides
     fun providesClient(): OkHttpClient =

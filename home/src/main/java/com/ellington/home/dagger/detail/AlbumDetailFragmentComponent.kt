@@ -1,23 +1,23 @@
-package com.ellington.home.dagger.list
+package com.ellington.home.dagger.detail
 
 import com.ellington.dagger.modules.BaseFragmentComponent
 import com.ellington.dagger.modules.CoreComponent
 import com.ellington.dagger.utils.PerApplication
 import com.ellington.home.dagger.CommonAlbumsModule
 import com.ellington.home.view.details.AlbumDetailFragment
-import com.ellington.home.view.list.AlbumListFragment
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [AlbumListFragmentModule::class, CommonAlbumsModule::class], dependencies = [CoreComponent::class])
+@Component(modules = [AlbumDetailFragmentModule::class, CommonAlbumsModule::class], dependencies = [CoreComponent::class])
 @PerApplication
-interface AlbumListFragmentComponent : BaseFragmentComponent<AlbumListFragment> {
+interface AlbumDetailFragmentComponent : BaseFragmentComponent<AlbumDetailFragment> {
 
     @Component.Builder
     interface Builder {
-        fun build(): AlbumListFragmentComponent
+        fun build(): AlbumDetailFragmentComponent
         @BindsInstance
-        fun albumViewingFragment(fragment: AlbumListFragment): Builder
+        fun albumViewingFragment(fragment: AlbumDetailFragment): Builder
+
         fun coreComponent(module: CoreComponent): Builder
     }
 }
