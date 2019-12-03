@@ -13,7 +13,6 @@ import com.ellington.mvvm.repository.Result
 import com.ellington.mvvm.utils.Event
 import com.ellington.mvvm.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Singleton
 
 class AlbumListViewModel(private val repository: AlbumsRepository) :
     BaseViewModel<AlbumListViewModelProvider>() {
@@ -32,10 +31,6 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
     val openAlbum: LiveData<Event<String>> = _openAlbumEvent
     val trackList: LiveData<TrackList> = _trackList
     val errorMessage: LiveData<Event<Int>> = _errorMessage
-
-    init {
-        loadAlbums(true)
-    }
 
     fun loadAlbums(forcedUpdate: Boolean = false) {
         _loading.value = true
