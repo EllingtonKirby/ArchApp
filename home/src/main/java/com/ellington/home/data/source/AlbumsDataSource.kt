@@ -2,6 +2,7 @@ package com.ellington.home.data.source
 
 import com.ellington.home.data.Album
 import com.ellington.home.data.Albums
+import com.ellington.home.data.TrackList
 import com.ellington.mvvm.repository.Result
 
 interface AlbumsDataSource {
@@ -9,4 +10,5 @@ interface AlbumsDataSource {
     suspend fun getNextPageOfAlbums(url: String): Result<Albums>
     suspend fun getAlbumById(albumId: String): Result<Album>
     suspend fun saveAlbums(albums: Albums)
+    suspend fun getTrackList(url: String): Result<TrackList>
 }
