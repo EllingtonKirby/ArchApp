@@ -9,6 +9,10 @@ dependencies {
     implementation Libraries.lifecycleReactiveStreams
     kapt Libraries.lifecycleCompiler
 
+    implementation Libraries.roomBase
+    implementation Libraries.roomKotlinExtensions
+    kapt Libraries.roomCompiler
+
     implementation Libraries.glide
     kapt Libraries.glideCompiler
 

@@ -1,6 +1,7 @@
 package com.ellington.home.data.source.impl
 
 import android.util.Log
+import com.ellington.home.data.Album
 import com.ellington.home.data.Albums
 import com.ellington.home.data.api.AlbumsApi
 import com.ellington.home.data.source.AlbumsDataSource
@@ -41,5 +42,13 @@ class AlbumsDataSourceImpl @Inject constructor(private val api: AlbumsApi) : Alb
                 Result.Error(Exception())
             }
             .blockingLast()
+    }
+
+    override suspend fun getAlbumById(albumId: String): Result<Album> {
+        return Result.Error(Exception())
+    }
+
+    override suspend fun saveAlbums(albums: Albums) {
+        //No-Op
     }
 }

@@ -41,6 +41,7 @@ object Versions {
     val material = "1.2.0-alpha02"
     val multiDex = "2.0.1"
     val navigation = "2.1.0"
+    val room = "2.2.2"
 
     val ktx = "1.0.0-alpha1"
 
@@ -104,6 +105,10 @@ object Libraries {
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+    val roomBase = "androidx.room:room-runtime:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    val roomKotlinExtensions = "androidx.room:room-ktx:${Versions.room}"
 }
 
 object SupportLibraries {

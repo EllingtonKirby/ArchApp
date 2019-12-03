@@ -7,5 +7,6 @@ data class Artist(
     var pictureSmall: String = "",
     var pictureMedium: String = "",
     var pictureBig: String = "",
-    var pictureXl: String = ""
+    var pictureXl: String = "",
+    var trackList: String = ""
 )

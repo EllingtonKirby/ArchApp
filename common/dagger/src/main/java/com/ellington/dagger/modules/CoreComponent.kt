@@ -1,12 +1,12 @@
 package com.ellington.dagger.modules
 
-import com.ellington.dagger.utils.PerApplication
 import com.google.gson.Gson
 import dagger.Component
 import okhttp3.OkHttpClient
+import javax.inject.Singleton
 
 @Component(modules = [NetworkingModule::class])
-@PerApplication
+@Singleton
 interface CoreComponent {
 
     @Component.Builder
