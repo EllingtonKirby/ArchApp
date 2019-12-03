@@ -1,6 +1,7 @@
 package com.ellington.home.data.api
 
 import com.ellington.home.data.Albums
+import com.ellington.home.data.TrackList
 import io.reactivex.Flowable
 import retrofit2.adapter.rxjava2.Result
 import retrofit2.http.GET
@@ -13,4 +14,7 @@ interface AlbumsApi {
 
     @GET
     fun getNextPageOfAlbums(@Url url: String): Flowable<Result<Albums>>
+
+    @GET
+    fun getTrackList(@Url url: String): Flowable<Result<TrackList>>
 }
