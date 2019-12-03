@@ -47,12 +47,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/floating_action_button"
+        android:id="@+id/album_info_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="@string/on_deezer"
-        app:layout_anchor="@id/album_detail_album_image" />
+        android:text="@string/on_deezer" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

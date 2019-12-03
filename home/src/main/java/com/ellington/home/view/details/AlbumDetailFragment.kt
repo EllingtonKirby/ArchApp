@@ -1,6 +1,8 @@
 package com.ellington.home.view.details
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -69,5 +71,11 @@ class AlbumDetailFragment(override val layoutResourceId: Int = R.layout.fragment
             .into(album_info_artist_image)
 
         album_info_release_date.append(album.releaseDate)
+
+        album_info_fab.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(album.link)
+            startActivity(intent)
+        }
     }
 }
