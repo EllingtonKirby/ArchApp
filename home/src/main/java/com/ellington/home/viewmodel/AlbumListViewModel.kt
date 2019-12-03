@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.ellington.home.R
 import com.ellington.home.data.Album
 import com.ellington.home.data.Albums
-import com.ellington.home.data.TrackList
 import com.ellington.home.data.source.AlbumsRepository
 import com.ellington.mvvm.repository.Result
 import com.ellington.mvvm.utils.Event
@@ -21,15 +20,11 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
     private val _albumList = MutableLiveData<MutableList<Album>>().apply { value = mutableListOf() }
     private val _albumsResponse = MutableLiveData<Albums>().apply { value = Albums() }
     private val _openAlbumEvent = MutableLiveData<Event<String>>()
-    private val _singleAlbumData = MutableLiveData<Album>().apply { value = Album() }
-    private val _trackList = MutableLiveData<TrackList>()
     private val _errorMessage = MutableLiveData<Event<Int>>()
 
     val isLoading: LiveData<Boolean> = _loading
     val albumList: LiveData<MutableList<Album>> = _albumList
-    val singleAlbum: LiveData<Album> = _singleAlbumData
     val openAlbum: LiveData<Event<String>> = _openAlbumEvent
-    val trackList: LiveData<TrackList> = _trackList
     val errorMessage: LiveData<Event<Int>> = _errorMessage
 
     init {
@@ -53,35 +48,6 @@ class AlbumListViewModel(private val repository: AlbumsRepository) :
                 _errorMessage.value = Event(R.string.error_loading_albums)
             }
 
-            _loading.value = false
-        }
-    }
-
-    fun loadAlbumById(albumId: String?) {
-        if (albumId != null) {
-            _loading.value = true
-            viewModelScope.launch {
-                val albumResult = repository.getAlbumById(albumId)
-                if (albumResult is Result.Success) {
-                    _singleAlbumData.postValue(albumResult.data)
-                    loadTrackList(albumResult.data.tracklist)
-                } else {
-                    Log.e("Error", "Error fetching albums")
-                    _errorMessage.value = Event(R.string.error_loading_album)
-                }
-
-                _loading.value = false
-            }
-        }
-    }
-
-    private fun loadTrackList(url: String) {
-        _loading.value = true
-        viewModelScope.launch {
-            val trackListResult = repository.getTrackList(url)
-            if (trackListResult is Result.Success) {
-                _trackList.postValue(trackListResult.data)
-            }
             _loading.value = false
         }
     }

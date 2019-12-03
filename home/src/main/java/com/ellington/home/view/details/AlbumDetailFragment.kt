@@ -12,12 +12,13 @@ import com.ellington.home.dagger.GlideApp
 import com.ellington.home.dagger.addCommonPlaceHolderAndFade
 import com.ellington.home.dagger.inject
 import com.ellington.home.data.Album
-import com.ellington.home.view.AlbumViewingFragment
+import com.ellington.home.viewmodel.details.AlbumDetailsViewModel
+import com.ellington.mvvm.viewmodel.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_album_detail.*
 import kotlinx.android.synthetic.main.layout_album_info.*
 
 class AlbumDetailFragment(override val layoutResourceId: Int = R.layout.fragment_album_detail) :
-    AlbumViewingFragment() {
+    ViewModelFragment<AlbumDetailsViewModel>() {
 
     private lateinit var adapter: TrackListAdapter
 

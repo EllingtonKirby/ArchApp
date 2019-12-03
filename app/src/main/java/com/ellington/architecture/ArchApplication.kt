@@ -1,7 +1,6 @@
 package com.ellington.architecture
 
 import android.app.Activity
-import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
@@ -11,7 +10,7 @@ import kotlin.random.Random
 open class ArchApplication : MultiDexApplication() {
 
     private val coreComponent by lazy {
-        DaggerCoreComponent.create()
+        DaggerCoreComponent.builder().application(this).build()
     }
 
     companion object {
