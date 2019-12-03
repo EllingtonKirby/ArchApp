@@ -1,4 +1,4 @@
-package com.ellington.home.dagger
+package com.ellington.home.dagger.list
 
 import androidx.lifecycle.ViewModelProvider
 import com.ellington.dagger.utils.PerActivity
@@ -7,7 +7,8 @@ import com.ellington.home.data.source.AlbumsDataSource
 import com.ellington.home.data.source.AlbumsRepository
 import com.ellington.home.data.source.impl.AlbumsDataSourceImpl
 import com.ellington.home.data.source.impl.AlbumsRepositoryImpl
-import com.ellington.home.view.AlbumListFragment
+import com.ellington.home.view.AlbumViewingFragment
+import com.ellington.home.view.list.AlbumListFragment
 import com.ellington.home.viewmodel.AlbumListViewModel
 import com.ellington.home.viewmodel.AlbumListViewModelProvider
 import com.google.gson.Gson
@@ -57,7 +58,7 @@ abstract class AlbumListFragmentModule {
         @PerActivity
         fun providesAlbumListViewModel(
             factory: AlbumListViewModelProvider,
-            fragment: AlbumListFragment
+            fragment: AlbumViewingFragment
         ): AlbumListViewModel {
             return ViewModelProvider(fragment, factory).get(AlbumListViewModel::class.java)
         }

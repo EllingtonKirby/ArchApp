@@ -1,7 +1,6 @@
-package com.ellington.home.view
+package com.ellington.home.view.list
 
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.home.data.Album
 import com.ellington.home.viewmodel.AlbumListViewModel
@@ -18,14 +17,19 @@ class AlbumListGridAdapter(private val albumListViewModel: AlbumListViewModel) :
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
-                val createdView = AlbumItemView(parent.context)
-                return ViewHolder(createdView)
+                val createdView =
+                    AlbumItemView(parent.context)
+                return ViewHolder(
+                    createdView
+                )
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     override fun getItemCount(): Int {
