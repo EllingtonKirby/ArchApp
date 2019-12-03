@@ -32,7 +32,7 @@ abstract class CommonAlbumsModule {
                 .client(client)
                 .baseUrl("https://api.deezer.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                // .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
         }
 
