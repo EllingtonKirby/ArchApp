@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ellington.home.R
 import com.ellington.home.dagger.GlideApp
+import com.ellington.home.dagger.addCommonPlaceHolderAndFade
 import com.ellington.home.dagger.inject
 import com.ellington.home.data.Album
 import com.ellington.home.view.AlbumViewingFragment
@@ -53,21 +53,15 @@ class AlbumDetailFragment(override val layoutResourceId: Int = R.layout.fragment
 
         GlideApp.with(this)
             .load(album.coverXl)
-            .fitCenter()
-            .placeholder(R.drawable.ic_album_placeholder)
-            .error(R.drawable.ic_album_placeholder)
-            .transition(DrawableTransitionOptions.withCrossFade(300))
+            .addCommonPlaceHolderAndFade()
             .into(album_detail_album_image)
 
         album_info_artist.append(album.artist.name)
 
         GlideApp.with(this)
             .load(album.artist.pictureMedium)
-            .fitCenter()
-            .placeholder(R.drawable.ic_album_placeholder)
-            .error(R.drawable.ic_album_placeholder)
+            .addCommonPlaceHolderAndFade()
             .circleCrop()
-            .transition(DrawableTransitionOptions.withCrossFade(300))
             .into(album_info_artist_image)
 
         album_info_release_date.append(album.releaseDate)
