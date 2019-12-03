@@ -7,7 +7,7 @@ tools from Android Jetpack.
 
 ### Modules
 
-The app is composed of a modular project structure, using dynamic features to create build an app bundle. In the future,
+The app is composed of a modular project structure, using dynamic features to build an app bundle. In the future,
 an app built on this foundation would receive the APK size reduction and dynamic delivery benefits of the app bundle.
 
 There is a very thin :app module. Then, there are two :common modules, one creating the base framework, the other setting
@@ -20,7 +20,7 @@ Much of the module level decisions were taken from [This great project by Mario 
 
 ### Architecture
 
-The app uses Google's recommended MMVM architecture, using the repository pattern to abstract network and local data retrieval.
+The app uses Google's recommended MVVM architecture, using the repository pattern to abstract network and local data retrieval.
 The ViewModel interacts with this repository, serving it to the Views via LiveData observations.
 
 In the creation of this project, I really grew to appreciate this architecture style. It allowed me to abstract out really
