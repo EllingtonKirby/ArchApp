@@ -1,4 +1,4 @@
-# Sample App Interacting with Deezer Albums Api
+# Sample App
 
 This app is an example of several modern Android architecture principles, using the latest available
 tools from Android Jetpack.
