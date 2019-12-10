@@ -12,5 +12,6 @@ class PhotoReelItemView(context: Context?) : ConstraintLayout(context) {
     }
 
     fun bind(data: RandomUser) {
+
     }
 }
