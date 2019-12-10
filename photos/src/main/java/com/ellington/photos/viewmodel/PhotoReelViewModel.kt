@@ -8,19 +8,21 @@ import com.ellington.mvvm.repository.Result
 import com.ellington.mvvm.utils.Event
 import com.ellington.mvvm.viewmodel.BaseViewModel
 import com.ellington.photos.R
+import com.ellington.photos.data.RandomUser
 import com.ellington.photos.data.RandomUserResponse
 import com.ellington.photos.data.source.PhotoReelRepository
+import com.ellington.photos.view.PhotoReelFragment.Companion.NUMBER_OF_RESPONSES
 import kotlinx.coroutines.launch
 
-class PhotoReelViewModel(val repository: PhotoReelRepository) :
+class PhotoReelViewModel(private val repository: PhotoReelRepository) :
     BaseViewModel<PhotoReelViewModelProvider>() {
 
     private val _randomUserResponse =
-        MutableLiveData<RandomUserResponse>().apply { this.value = RandomUserResponse() }
+        MutableLiveData<List<RandomUser>>().apply { this.value = emptyList() }
     private val _loading = MutableLiveData<Boolean>()
     private val _error = MutableLiveData<Event<Int>>()
 
-    val randomUsersResponse: LiveData<RandomUserResponse> = _randomUserResponse
+    val randomUsersResponse: LiveData<List<RandomUser>> = _randomUserResponse
     val loading: LiveData<Boolean> = _loading
     val error: LiveData<Event<Int>> = _error
 
@@ -30,7 +32,7 @@ class PhotoReelViewModel(val repository: PhotoReelRepository) :
             val response = repository.getRandomUsers(numberOfResponses)
 
             if (response is Result.Success) {
-                _randomUserResponse.postValue(response.data)
+                setData(response.data)
             } else {
                 Log.e("Error", "Error fetching random users")
                 _error.value = Event(R.string.error_fetching_users)
@@ -38,6 +40,22 @@ class PhotoReelViewModel(val repository: PhotoReelRepository) :
 
             _loading.value = false
         }
+    }
+
+    fun loadMoreRandomUsers() {
+        getRandomUsers(NUMBER_OF_RESPONSES)
+    }
+
+    private fun setData(response: RandomUserResponse) {
+        _randomUserResponse.value = _randomUserResponse.value?.plus(response.results)
+    }
+
+    fun getRandomUsersCount(): Int? {
+        return _randomUserResponse.value?.size
+    }
+
+    fun getUseAtPosition(position: Int): RandomUser? {
+        return _randomUserResponse.value?.get(position)
     }
 
     override fun onCleared() {
