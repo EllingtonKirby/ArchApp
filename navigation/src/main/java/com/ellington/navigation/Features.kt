@@ -13,3 +13,10 @@ object HomeNavigation : DynamicFeature<Intent> {
     override val dynamicStart: Intent?
         get() = HOME.loadIntentOrNull()
 }
+
+object PhotoReelNavigation : DynamicFeature<Intent> {
+    private const val PHOTOS = "com.ellington.photos.view.PhotoReelActivity"
+
+    override val dynamicStart: Intent?
+        get() = PHOTOS.loadIntentOrNull()
+}

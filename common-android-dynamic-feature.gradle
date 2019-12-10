@@ -15,17 +15,12 @@ android {
 
 dependencies {
     implementation project(Modules.app)
+    implementation project(Modules.mvvm)
+    implementation project(Modules.dagger)
+
     implementation Libraries.kotlin
 
     implementation Libraries.dagger
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
-
-    implementation SupportLibraries.design
-    implementation SupportLibraries.constraintLayout
-    implementation SupportLibraries.cardview
-    implementation SupportLibraries.recyclerview
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.navigationFragment
-    implementation SupportLibraries.navigationUI
 }

@@ -5,6 +5,19 @@ dependencies {
     kapt Libraries.daggerAnnotationProcessor
     kapt Libraries.daggerCompiler
 
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.design
+    api SupportLibraries.design
+    api SupportLibraries.constraintLayout
+    api SupportLibraries.cardview
+    api SupportLibraries.recyclerview
+    api SupportLibraries.appcompat
+    api SupportLibraries.navigationFragment
+    api SupportLibraries.navigationUI
+
+    api Libraries.lifecycleExtensions
+    api Libraries.lifecycleKotlinExtensions
+    api Libraries.lifecycleReactiveStreams
+    kapt Libraries.lifecycleCompiler
+
+    api Libraries.retrofit
+    api Libraries.retrofitGsonAdapter
 }
