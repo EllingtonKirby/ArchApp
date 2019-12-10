@@ -6,8 +6,9 @@ object Modules {
     val app = ":app"
     val dagger = ":common:dagger"
     val mvvm = ":common:mvvm"
-    val home = ":home"
     val navigation = ":navigation"
+    val home = ":home"
+    val photos = ":photos"
 }
 
 object Releases {

@@ -1,21 +1,10 @@
 apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 dependencies {
-    implementation project(Modules.mvvm)
-    implementation project(Modules.dagger)
-
-    implementation Libraries.lifecycleExtensions
-    implementation Libraries.lifecycleKotlinExtensions
-    implementation Libraries.lifecycleReactiveStreams
-    kapt Libraries.lifecycleCompiler
-
     implementation Libraries.roomBase
     implementation Libraries.roomKotlinExtensions
     kapt Libraries.roomCompiler
 
     implementation Libraries.glide
     kapt Libraries.glideCompiler
-
-    implementation Libraries.retrofit
-    implementation Libraries.retrofitGsonAdapter
 }
