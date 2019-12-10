@@ -1,3 +1,8 @@
 package com.ellington.photos.data.source
 
-interface PhotoReelDataSource
+import com.ellington.mvvm.repository.Result
+import com.ellington.photos.data.RandomUserResponse
+
+interface PhotoReelDataSource {
+    suspend fun getRandomUsers(numberOfResponses: Int): Result<RandomUserResponse>
+}
