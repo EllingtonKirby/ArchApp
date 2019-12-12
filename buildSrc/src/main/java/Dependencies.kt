@@ -9,6 +9,7 @@ object Modules {
     val navigation = ":navigation"
     val home = ":home"
     val photos = ":photos"
+    val imageLoading = ":imageloading"
 }
 
 object Releases {
