@@ -52,7 +52,8 @@ class PhotoReelFragment(override val layoutResourceId: Int = R.layout.fragment_p
 
     override fun observeLiveData() {
         viewModel.randomUsersResponse.observe(this, Observer {
-            adapter.notifyDataSetChanged()
+            //This is hacky, the proper replacement would be to implement the DiffUtil for RandomPerson
+            adapter.notifyItemRangeInserted(adapter.itemCount, it.size)
         })
 
         viewModel.loading.observe(this, Observer {
