@@ -57,7 +57,7 @@ class ImageLoaderImpl : ImageLoader {
                 stream = getInputStream(url)
                 val createdOrReusedBitmap = BitmapFactory.decodeStream(stream, null, options)
                 cache.cacheBitmap(url, createdOrReusedBitmap)
-                createdOrReusedBitmap
+                cache.getBitmapFromCache(url)
             } else {
                 reuseBitmap
             }
@@ -66,6 +66,15 @@ class ImageLoaderImpl : ImageLoader {
                 if (decodedBitmap != null) {
                     imageView.setImageBitmap(decodedBitmap)
                 }
+            }
+        }
+    }
+
+    override fun putBitmapIntoPool(url: String, id: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val toRecycle = cache.recycleBitmap(url)
+            if (toRecycle != null) {
+                pool.put(toRecycle, toRecycle.width, toRecycle.height, toRecycle.config)
             }
         }
     }
