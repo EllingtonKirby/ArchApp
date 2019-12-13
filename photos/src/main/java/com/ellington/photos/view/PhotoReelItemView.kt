@@ -18,6 +18,7 @@ class PhotoReelItemView(context: Context?, private val imageLoader: ImageLoader)
 
     fun bind(data: RandomUser) {
         randomUser = data
+        photo_reel_item_image.setImageResource(R.drawable.ic_photo_placeholder)
         imageLoader.loadImageFromUrl(
             randomUser?.getMediumPictureUrl() ?: return,
             photo_reel_item_image

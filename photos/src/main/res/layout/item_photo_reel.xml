@@ -8,7 +8,6 @@
         android:id="@+id/photo_reel_item_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/ic_photo_placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"

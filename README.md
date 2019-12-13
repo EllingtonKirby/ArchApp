@@ -3,6 +3,54 @@
 This app is an example of several modern Android architecture principles, using the latest available
 tools from Android Jetpack.
 
+## Image Loading
+
+### Introduction
+
+The ":imageloading" module contains a custom implementation of an image loading library, with inspiration taken from Glide. 
+I decided to use Kotlin coroutines to load and prepare bitmaps, allowing network operations to take place off the main thread. 
+Bitmaps are loaded and in the `ImageLoadingImpl` class, which contains references to the other core image loading features.
+
+This module is used in the ":photos" module to power the grid scrolling image display. 
+
+Data for this feature was sourced from the [randomuser.me](randomuser.me) api. The random users returned from this API contain
+an object of image urls. These urls are what was used as the image sources.  
+
+Much of the inspiration for the optimizations were taken from Google's developer resources on [working with graphics](https://developer.android.com/topic/performance/graphics/)
+
+### Bitmap Caching
+
+The first optimization I chose to work with was a memory cache for Bitmaps. This provided several optimizations:
+
+ * Obviously given that the grid is rendered using a RecyclerView, caching bitmaps allows us to reduce unnecessary network calls
+ to redisplay images. 
+ * Secondarily, the Random Users returned from the API sometimes contain duplicate images, so caching allows us to reuse bitmaps in this instance
+
+The cache was implemented with a simple Least Recently Used implementation provided by the Android API. Our implementation then just links the cache
+to the bitmap pool, discussed below. 
+
+### Bitmap Pooling
+
+The second optimization was taken with inspiration from [Mindorks bitmap pool implementation](https://github.com/amitshekhariitbhu/GlideBitmapPool)
+
+I found the bitmap pool somewhat complicated by the source of the images and the nature of the display. Given that I was displaying elements in a
+repeating grid of a RecyclerView, every bitmap was of the same size. In my first implementation, I realized that the Key to the Bitmap pool
+was resolving as the same for every bitmap, so I needed to count resource usages, similar to the `GroupedLinkedMap` in the Mindorks implementation.
+In the [second implementation](https://github.com/EllingtonKirby/ArchApp/commit/5e04cc5d6ece996f1e8f5562bf9f786a6b593e7a) I tried counting resources and 
+reusing bitmaps whenever a resource was no longer in the list. Though this may have been more efficient memory wise (there would only be bitmaps equal to the 
+number of unique images) it was less efficient network wise, and displayed much worse (more on display issues before).
+I decided to do what google suggested, and recycle bitmaps on cache eviction.
+
+### Takeaways
+* I had originally wanted to a fade animation when bitmaps were placed in ImageViews. This wound up being a much larger undertaking
+and after already spending a lot of time working on the bitmap pool, I decided to leave it. The positive side is that Coroutines run so efficiently that on standard
+network conditions the images load very quickly.
+* Because each bitmap was exactly the same size, I didn't gain much experience resizing bitmaps to reuse larger ones for smaller images
+* I built this app on an existing framework I had previously developed. Implementing a new feature reinforced my confidence
+and appreciation for the new Jetpack tools. I was able to spend 90% of my development time focused on the interesting problem of image loading
+* After completing this project I have an immense respect for the developers of Glide and other image loading libraries. They solve a
+difficult problem in an extremely exhaustive yet elegant way, and surface an extremely digestible API. 
+
 ## Core
 
 ### Modules
