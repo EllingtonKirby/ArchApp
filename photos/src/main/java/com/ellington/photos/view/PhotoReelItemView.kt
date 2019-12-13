@@ -10,11 +10,25 @@ import kotlinx.android.synthetic.main.item_photo_reel.view.*
 class PhotoReelItemView(context: Context?, private val imageLoader: ImageLoader) :
     ConstraintLayout(context) {
 
+    private var randomUser: RandomUser? = null
+
     init {
         inflate(context, R.layout.item_photo_reel, this)
     }
 
     fun bind(data: RandomUser) {
-        imageLoader.loadImageFromUrl(data.getThumbnailUrl() ?: return, photo_reel_item_image)
+        randomUser = data
+        imageLoader.loadImageFromUrl(randomUser?.getThumbnailUrl() ?: return, photo_reel_item_image)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        imageLoader.putBitmapIntoPool(
+            randomUser?.getThumbnailUrl() ?: return,
+            photo_reel_item_image.id
+        )
+    }
+
+    fun onRecycle() {
     }
 }

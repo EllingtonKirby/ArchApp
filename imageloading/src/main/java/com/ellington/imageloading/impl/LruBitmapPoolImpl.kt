@@ -1,13 +1,17 @@
 package com.ellington.imageloading.impl
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.LruCache
 import com.ellington.imageloading.BitmapPool
+import com.ellington.imageloading.R
+import java.util.Queue
+import java.util.concurrent.ConcurrentLinkedQueue
 
 class LruBitmapPoolImpl(private val maxSize: Int) : BitmapPool {
 
-    private val pool = LruCache<BitmapPoolCacheKey, Bitmap>(maxSize)
+    private val pool = LruCache<BitmapPoolCacheKey, Queue<Bitmap>>(maxSize)
 
     companion object {
         fun getInstance(maxSize: Int): BitmapPool {
@@ -20,13 +24,17 @@ class LruBitmapPoolImpl(private val maxSize: Int) : BitmapPool {
     }
 
     override fun get(width: Int, height: Int, config: Bitmap.Config): Bitmap? {
-        return pool[BitmapPoolCacheKey(width, height, config)]?.apply {
-            eraseColor(Color.TRANSPARENT)
-        }
+        return pool[BitmapPoolCacheKey(width, height, config)]?.poll()
     }
 
     override fun put(toCache: Bitmap, width: Int, height: Int, config: Bitmap.Config) {
-        pool.put(BitmapPoolCacheKey(width, height, config), toCache)
+        val key = BitmapPoolCacheKey(width, height, config)
+        toCache.eraseColor(Color.TRANSPARENT)
+        if (pool[key] != null) {
+            pool[key]?.add(toCache)
+        } else {
+            pool.put(key, ConcurrentLinkedQueue<Bitmap>().apply { this.add(toCache) })
+        }
     }
 
     private data class BitmapPoolCacheKey(

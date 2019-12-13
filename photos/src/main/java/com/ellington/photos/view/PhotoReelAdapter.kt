@@ -4,7 +4,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ellington.imageloading.ImageLoader
 import com.ellington.imageloading.impl.ImageLoaderImpl
-import com.ellington.photos.data.RandomUser
 import com.ellington.photos.viewmodel.PhotoReelViewModel
 
 class PhotoReelAdapter(private val viewModel: PhotoReelViewModel) :
@@ -12,11 +11,7 @@ class PhotoReelAdapter(private val viewModel: PhotoReelViewModel) :
 
     private val imageLoader: ImageLoader = ImageLoaderImpl()
 
-    class ViewHolder(private val view: PhotoReelItemView) : RecyclerView.ViewHolder(view) {
-        fun bind(data: RandomUser) {
-            view.bind(data)
-        }
-    }
+    class ViewHolder(val view: PhotoReelItemView) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(PhotoReelItemView(parent.context, imageLoader))
@@ -28,7 +23,12 @@ class PhotoReelAdapter(private val viewModel: PhotoReelViewModel) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         viewModel.getUseAtPosition(position)?.let {
-            holder.bind(it)
+            holder.view.bind(it)
         }
+    }
+
+    override fun onViewRecycled(holder: ViewHolder) {
+        super.onViewRecycled(holder)
+        holder.view.onRecycle()
     }
 }

@@ -6,12 +6,12 @@ import com.ellington.imageloading.BitmapCache
 
 class LruBitmapCacheImpl(private val maxSize: Int) : BitmapCache {
 
-    private val cache: LruCache<String, Bitmap>
+    private val cache: LruCache<String, BitmapReferenceCounter>
 
     init {
-        cache = object : LruCache<String, Bitmap>(maxSize) {
-            override fun sizeOf(key: String, value: Bitmap): Int {
-                return value.byteCount / 1024
+        cache = object : LruCache<String, BitmapReferenceCounter>(maxSize) {
+            override fun sizeOf(key: String, value: BitmapReferenceCounter): Int {
+                return value.bitmap?.byteCount?.div(1024) ?: 0
             }
         }
     }
@@ -23,10 +23,29 @@ class LruBitmapCacheImpl(private val maxSize: Int) : BitmapCache {
     }
 
     override fun getBitmapFromCache(resourceId: String): Bitmap? {
-        return cache[resourceId]
+        val reference = cache[resourceId]
+        return if (reference != null) {
+            reference.references++
+            reference.bitmap
+        } else {
+            null
+        }
     }
 
     override fun cacheBitmap(resourceId: String, bitmap: Bitmap?) {
-        cache.put(resourceId, bitmap)
+        cache.put(resourceId, BitmapReferenceCounter(bitmap))
     }
+
+    override fun recycleBitmap(resourceId: String): Bitmap? {
+        val reference = cache[resourceId]
+        if (reference != null) {
+            reference.references--
+        }
+        return null
+    }
+
+    data class BitmapReferenceCounter(
+        var bitmap: Bitmap?,
+        var references: Int = 0
+    )
 }
