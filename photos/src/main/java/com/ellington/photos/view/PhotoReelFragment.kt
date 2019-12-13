@@ -19,7 +19,7 @@ class PhotoReelFragment(override val layoutResourceId: Int = R.layout.fragment_p
     private lateinit var adapter: PhotoReelAdapter
 
     companion object {
-        const val NUMBER_OF_RESPONSES = 40
+        const val NUMBER_OF_RESPONSES = 500
         fun newInstance(): PhotoReelFragment {
             return PhotoReelFragment()
         }
