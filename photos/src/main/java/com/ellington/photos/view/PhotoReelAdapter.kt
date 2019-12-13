@@ -26,9 +26,4 @@ class PhotoReelAdapter(private val viewModel: PhotoReelViewModel) :
             holder.view.bind(it)
         }
     }
-
-    override fun onViewRecycled(holder: ViewHolder) {
-        super.onViewRecycled(holder)
-        holder.view.onRecycle()
-    }
 }
