@@ -23,6 +23,7 @@ class ImageLoaderImpl : ImageLoader {
          * On a normal/hdpi device this is a minimum of around 4MB (32/8).
          * A full screen GridView filled with images on a device with 800x480 resolution would use around 1.5MB (800*480*4 bytes),
          * so this would cache a minimum of around 2.5 pages of images in memory.
+         * From: https://developer.android.com/topic/performance/graphics/cache-bitmap
          */
         val maxMemory = (Runtime.getRuntime().maxMemory() / 1024).toInt()
         val cacheSize = maxMemory / 8
@@ -42,7 +43,7 @@ class ImageLoaderImpl : ImageLoader {
                 options.inJustDecodeBounds = true
                 options.inSampleSize = 1
                 BitmapFactory.decodeStream(stream, null, options)
-
+                //Specifies bitmap to reuse
                 val inBitmap = pool.get(
                     options.outWidth,
                     options.outHeight,
@@ -53,7 +54,7 @@ class ImageLoaderImpl : ImageLoader {
                 }
                 options.inMutable = true
                 options.inJustDecodeBounds = false
-
+                //Have to open input stream a second time as it was consumed
                 stream = getInputStream(url)
                 val createdOrReusedBitmap = BitmapFactory.decodeStream(stream, null, options)
                 cache.cacheBitmap(url, createdOrReusedBitmap)
@@ -66,15 +67,6 @@ class ImageLoaderImpl : ImageLoader {
                 if (decodedBitmap != null) {
                     imageView.setImageBitmap(decodedBitmap)
                 }
-            }
-        }
-    }
-
-    override fun putBitmapIntoPool(url: String, id: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val toRecycle = cache.recycleBitmap(url)
-            if (toRecycle != null) {
-                pool.put(toRecycle, toRecycle.width, toRecycle.height, toRecycle.config)
             }
         }
     }

@@ -18,17 +18,9 @@ class PhotoReelItemView(context: Context?, private val imageLoader: ImageLoader)
 
     fun bind(data: RandomUser) {
         randomUser = data
-        imageLoader.loadImageFromUrl(randomUser?.getThumbnailUrl() ?: return, photo_reel_item_image)
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        imageLoader.putBitmapIntoPool(
-            randomUser?.getThumbnailUrl() ?: return,
-            photo_reel_item_image.id
+        imageLoader.loadImageFromUrl(
+            randomUser?.getMediumPictureUrl() ?: return,
+            photo_reel_item_image
         )
-    }
-
-    fun onRecycle() {
     }
 }

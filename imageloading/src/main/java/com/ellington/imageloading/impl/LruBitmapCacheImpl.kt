@@ -7,26 +7,24 @@ import com.ellington.imageloading.BitmapPool
 
 class LruBitmapCacheImpl(private val maxSize: Int, private val pool: BitmapPool) : BitmapCache {
 
-    private val cache: LruCache<String, BitmapReferenceCounter>
+    private val cache: LruCache<String, Bitmap>
 
     init {
-        cache = object : LruCache<String, BitmapReferenceCounter>(maxSize) {
-            override fun sizeOf(key: String, value: BitmapReferenceCounter): Int {
-                return value.bitmap?.byteCount?.div(1024) ?: 0
+        cache = object : LruCache<String, Bitmap>(maxSize) {
+            override fun sizeOf(key: String, value: Bitmap): Int {
+                return value.byteCount / 1024
             }
 
             override fun entryRemoved(
                 evicted: Boolean,
                 key: String?,
-                oldValue: BitmapReferenceCounter?,
-                newValue: BitmapReferenceCounter?
+                oldValue: Bitmap?,
+                newValue: Bitmap?
             ) {
                 super.entryRemoved(evicted, key, oldValue, newValue)
                 if (evicted) {
-                    if (oldValue?.references ?: 0 <= 0) {
-                        val toRecycle = oldValue?.bitmap ?: return
-                        pool.put(toRecycle, toRecycle.width, toRecycle.height, toRecycle.config)
-                    }
+                    //When a reference is evicted from the cache, reuse the bitmap
+                    pool.put(oldValue ?: return, oldValue.width, oldValue.height, oldValue.config)
                 }
             }
         }
@@ -39,29 +37,10 @@ class LruBitmapCacheImpl(private val maxSize: Int, private val pool: BitmapPool)
     }
 
     override fun getBitmapFromCache(resourceId: String): Bitmap? {
-        val reference = cache[resourceId]
-        return if (reference != null) {
-            reference.references++
-            reference.bitmap
-        } else {
-            null
-        }
+        return cache[resourceId]
     }
 
     override fun cacheBitmap(resourceId: String, bitmap: Bitmap?) {
-        cache.put(resourceId, BitmapReferenceCounter(bitmap))
+        cache.put(resourceId, bitmap)
     }
-
-    override fun recycleBitmap(resourceId: String): Bitmap? {
-        val reference = cache[resourceId]
-        if (reference != null) {
-            reference.references--
-        }
-        return null
-    }
-
-    data class BitmapReferenceCounter(
-        var bitmap: Bitmap?,
-        var references: Int = 0
-    )
 }

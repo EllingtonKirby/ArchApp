@@ -1,11 +1,9 @@
 package com.ellington.imageloading.impl
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.LruCache
 import com.ellington.imageloading.BitmapPool
-import com.ellington.imageloading.R
 import java.util.Queue
 import java.util.concurrent.ConcurrentLinkedQueue
 
