@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentLinkedQueue
 
 class LruBitmapPoolImpl(private val maxSize: Int) : BitmapPool {
 
+    //A queue stores all currently available bitmaps matching the key
+    //Cannot map directly as multiple bitmaps will satisfy the key, Queue is a simple way to track references
     private val pool = LruCache<BitmapPoolCacheKey, Queue<Bitmap>>(maxSize)
 
     companion object {

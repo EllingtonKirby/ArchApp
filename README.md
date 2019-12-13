@@ -38,18 +38,20 @@ repeating grid of a RecyclerView, every bitmap was of the same size. In my first
 was resolving as the same for every bitmap, so I needed to count resource usages, similar to the `GroupedLinkedMap` in the Mindorks implementation.
 In the [second implementation](https://github.com/EllingtonKirby/ArchApp/commit/5e04cc5d6ece996f1e8f5562bf9f786a6b593e7a) I tried counting resources and 
 reusing bitmaps whenever a resource was no longer in the list. Though this may have been more efficient memory wise (there would only be bitmaps equal to the 
-number of unique images) it was less efficient network wise, and displayed much worse (more on display issues before).
+number of unique images currently displayed) it was less efficient network wise, and displayed much worse (recycling of bitmaps was occurring much more often as the 
+cache was being skipped, and one could clearly see the transition of transparent bitmap to the image).
 I decided to do what google suggested, and recycle bitmaps on cache eviction.
 
-### Takeaways
-* I had originally wanted to a fade animation when bitmaps were placed in ImageViews. This wound up being a much larger undertaking
-and after already spending a lot of time working on the bitmap pool, I decided to leave it. The positive side is that Coroutines run so efficiently that on standard
-network conditions the images load very quickly.
+### Image Loading Takeaways
 * Because each bitmap was exactly the same size, I didn't gain much experience resizing bitmaps to reuse larger ones for smaller images
 * I built this app on an existing framework I had previously developed. Implementing a new feature reinforced my confidence
 and appreciation for the new Jetpack tools. I was able to spend 90% of my development time focused on the interesting problem of image loading
 * After completing this project I have an immense respect for the developers of Glide and other image loading libraries. They solve a
 difficult problem in an extremely exhaustive yet elegant way, and surface an extremely digestible API. 
+
+### For the future
+* A fade animation when bitmaps were placed in ImageViews.
+* An Api for placing error images and placeholder images
 
 ## Core
 
@@ -88,7 +90,7 @@ Instead I used Dagger2 alone, and ran into no issues.
 I used the [Plaid](https://github.com/android/plaid) app as an example to make many of my decisions, and it seemed
 they had run into a similar issue using dagger.Android in the modularization of the project.
 
-## Takeaways
+## Architecture Takeaways
 * Retrofit 2.6 adding coroutine support is amazing. I had no need for RxJava at any level in the project
 * Deciding on the ViewModelStore is important. I use fragments as the ViewModelStore owner, but this necessitates a ViewModel per Fragment approach, which
 can introduce some boilerplate

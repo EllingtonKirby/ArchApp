@@ -36,25 +36,26 @@ class ImageLoaderImpl : ImageLoader {
         CoroutineScope(Dispatchers.IO).launch {
 
             val reuseBitmap = cache.getBitmapFromCache(url)
-
+            //Check if we have an already created, correctly encoded, bitmap to reuse
             val decodedBitmap = if (reuseBitmap == null) {
                 var stream = getInputStream(url)
                 val options = BitmapFactory.Options()
                 options.inJustDecodeBounds = true
                 options.inSampleSize = 1
                 BitmapFactory.decodeStream(stream, null, options)
-                //Specifies bitmap to reuse
+                //Check if we have a previously encoded bitmap to reuse
                 val inBitmap = pool.get(
                     options.outWidth,
                     options.outHeight,
                     options.inPreferredConfig
                 )
                 if (inBitmap != null && canUseForInBitmap(inBitmap, options)) {
+                    //Specify it here
                     options.inBitmap = inBitmap
                 }
                 options.inMutable = true
                 options.inJustDecodeBounds = false
-                //Have to open input stream a second time as it was consumed
+                //Have to open input stream a second time as it was consumed in the bounds check
                 stream = getInputStream(url)
                 val createdOrReusedBitmap = BitmapFactory.decodeStream(stream, null, options)
                 cache.cacheBitmap(url, createdOrReusedBitmap)
