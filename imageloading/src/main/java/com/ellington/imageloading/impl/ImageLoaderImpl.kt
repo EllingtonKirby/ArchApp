@@ -27,8 +27,8 @@ class ImageLoaderImpl : ImageLoader {
         val maxMemory = (Runtime.getRuntime().maxMemory() / 1024).toInt()
         val cacheSize = maxMemory / 8
 
-        cache = LruBitmapCacheImpl.getInstance(cacheSize)
         pool = LruBitmapPoolImpl.getInstance(cacheSize)
+        cache = LruBitmapCacheImpl.getInstance(cacheSize, pool)
     }
 
     override fun loadImageFromUrl(url: String, imageView: ImageView) {

@@ -3,8 +3,9 @@ package com.ellington.imageloading.impl
 import android.graphics.Bitmap
 import android.util.LruCache
 import com.ellington.imageloading.BitmapCache
+import com.ellington.imageloading.BitmapPool
 
-class LruBitmapCacheImpl(private val maxSize: Int) : BitmapCache {
+class LruBitmapCacheImpl(private val maxSize: Int, private val pool: BitmapPool) : BitmapCache {
 
     private val cache: LruCache<String, BitmapReferenceCounter>
 
@@ -13,12 +14,27 @@ class LruBitmapCacheImpl(private val maxSize: Int) : BitmapCache {
             override fun sizeOf(key: String, value: BitmapReferenceCounter): Int {
                 return value.bitmap?.byteCount?.div(1024) ?: 0
             }
+
+            override fun entryRemoved(
+                evicted: Boolean,
+                key: String?,
+                oldValue: BitmapReferenceCounter?,
+                newValue: BitmapReferenceCounter?
+            ) {
+                super.entryRemoved(evicted, key, oldValue, newValue)
+                if (evicted) {
+                    if (oldValue?.references ?: 0 <= 0) {
+                        val toRecycle = oldValue?.bitmap ?: return
+                        pool.put(toRecycle, toRecycle.width, toRecycle.height, toRecycle.config)
+                    }
+                }
+            }
         }
     }
 
     companion object {
-        fun getInstance(maxSize: Int): BitmapCache {
-            return LruBitmapCacheImpl(maxSize)
+        fun getInstance(maxSize: Int, pool: BitmapPool): BitmapCache {
+            return LruBitmapCacheImpl(maxSize, pool)
         }
     }
 
